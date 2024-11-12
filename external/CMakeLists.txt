@@ -8,7 +8,7 @@ FetchContent_Declare(SDL
 
 FetchContent_Declare(SDL_gpu_shadercross
     GIT_REPOSITORY "https://github.com/libsdl-org/SDL_gpu_shadercross"
-    GIT_TAG "7fb4b66e0ce714946e84f10a8480bdc1ad22a4f8")
+    GIT_TAG "8c45abff9a8195da6779e63b0a7dc6f90013cf01")
 
 FetchContent_Declare(SPIRV_Cross
     GIT_REPOSITORY "https://github.com/KhronosGroup/SPIRV-Cross"
@@ -20,9 +20,6 @@ set(SDL_STATIC ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(SDL)
 
 message(STATUS "Fetching SDL_gpu_shadercross...")
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
-
-# set(SDLGPUSHADERCROSS_VENDORED ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(SDL_gpu_shadercross)
 
 message(STATUS "Fetching SPIRV-Cross...")
