@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(SDL_gpu_examples)
-find_package(SDL3 REQUIRED)
+add_subdirectory(external)
 
 add_executable(SDL_gpu_examples
     Examples/main.c
@@ -40,9 +40,13 @@ add_executable(SDL_gpu_examples
 target_include_directories(SDL_gpu_examples PRIVATE shadercross)
 
 target_link_libraries(SDL_gpu_examples
-    SDL3::SDL3
+    SDL3::SDL3-static
     SDL3::Headers
+    SDL_gpu_shadercross
+    spirv-cross-c
 )
+
+target_compile_definitions(SDL_gpu_examples PRIVATE SDL_GPU_SHADERCROSS_STATIC)
 
 add_custom_command(TARGET SDL_gpu_examples POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/Content $<TARGET_FILE_DIR:SDL_gpu_examples>/Content
